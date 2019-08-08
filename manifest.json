@@ -1,0 +1,23 @@
+{
+  "name": "TensorBoard Empty Scalar Hider",
+  "version": "0.1",
+  "description": "Hide your useless empty scalar/panes in TensorBoard.",
+  "manifest_version": 2,
+  "author": "Jasonnor",
+  "icons": {
+    "16": "icon16.png",
+    "48": "icon48.png",
+    "128": "icon128.png"
+  },
+  "browser_action": {
+    "default_icon": "icon128.png"
+  },
+  "background": {
+    "scripts": ["js/background.js"],
+    "persistent": false
+  },
+  "permissions": [
+    "activeTab",
+    "storage"
+  ]
+}
