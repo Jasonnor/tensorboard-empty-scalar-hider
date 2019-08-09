@@ -1,4 +1,4 @@
-# [tensorboard-empty-scalar-hider](https://chrome.google.com/webstore/detail/tensorboard-empty-scalar/ejhcppphehbibgdnmjelljfeconkljmk)
+# [TensorBoard Empty Scalar Hider](https://chrome.google.com/webstore/detail/tensorboard-empty-scalar/ejhcppphehbibgdnmjelljfeconkljmk)
 
 ![demo](assets/demo.gif)
 
