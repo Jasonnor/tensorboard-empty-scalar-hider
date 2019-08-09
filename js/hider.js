@@ -31,9 +31,13 @@ if (typeof hiderInitialized === 'undefined') {
 
   async function displayAllScalar() {
     // Wait for panes loading
-    await sleep(500)
+    await sleep(100)
     const scalarList = document.getElementsByTagName('tf-scalar-card')
     for (const scalar of scalarList) {
+      while (scalar.getElementsByClassName('main').length === 0) {
+        console.debug('Still loading, wait 50ms...')
+        await sleep(50)
+      }
       scalar.style.display = 'block'
     }
     document.getElementById('reload-button').click()
