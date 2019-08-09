@@ -34,6 +34,7 @@ if (typeof hiderInitialized === 'undefined') {
     await sleep(100)
     const scalarList = document.getElementsByTagName('tf-scalar-card')
     for (const scalar of scalarList) {
+      // If main class not exist in scalar, wait 50ms
       while (scalar.getElementsByClassName('main').length === 0) {
         console.debug('Still loading, wait 50ms...')
         await sleep(50)
@@ -48,9 +49,14 @@ if (typeof hiderInitialized === 'undefined') {
   console.info('TensorBoard Empty Scalar Hider: Successfully initialized.')
 
   // Add action event listener of display then hide
-  const actionList = document.querySelectorAll('.heading, .icon-container')
+  const actionList = document.querySelectorAll('.heading, .icon-container, #toggle-all')
   for (const action of actionList) {
-    action.addEventListener('mouseup', () => {
+    action.addEventListener('mouseup', (event) => {
+      // Only run script on not opened panes
+      const targetElement = event.target || event.srcElement;
+      if (targetElement.hasAttribute('open-button')) {
+        return
+      }
       displayAllScalar().then(hideEmptyScalar)
     })
   }
