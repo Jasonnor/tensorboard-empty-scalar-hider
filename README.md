@@ -4,7 +4,7 @@
 
 Chrome Extension of hiding empty scalar/panes in TensorBoard.
 
-Inspired by [issue #40](https://github.com/tensorflow/tensorboard/issues/40) of tensorboard.
+Inspired by [issue#40](https://github.com/tensorflow/tensorboard/issues/40) of tensorboard.
 
 ## Installation
 
