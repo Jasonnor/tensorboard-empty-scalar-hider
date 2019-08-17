@@ -1,0 +1,126 @@
+body {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  margin: 0.5rem 0 0 2rem;
+  background-color: #ECECEC;
+  font-family: 'Open Sans Condensed', sans-serif;
+}
+
+.flex-container {
+  display: flex;
+  flex-direction: column;
+  width: 320px;
+  font-size: 16px;
+}
+
+.options-row {
+  display: flex;
+  flex-direction: row;
+  line-height: 34px;
+  margin-top: 0.5rem;
+}
+
+.options-input {
+  margin-left: 1rem;
+}
+
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 60px;
+  height: 34px;
+}
+
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  -webkit-transition: .4s;
+  transition: .4s;
+  border-radius: 34px;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 26px;
+  width: 26px;
+  left: 4px;
+  bottom: 4px;
+  background-color: white;
+  -webkit-transition: .4s;
+  transition: .4s;
+  border-radius: 50%;
+}
+
+input:checked+.slider {
+  background-color: rgb(58, 58, 58);
+}
+
+input:focus+.slider {
+  box-shadow: 0 0 1px rgb(58, 58, 58);
+}
+
+input:checked+.slider:before {
+  -webkit-transform: translateX(26px);
+  -ms-transform: translateX(26px);
+  transform: translateX(26px);
+}
+
+
+.options-button {
+  text-align: center;
+  width: 100px;
+  margin: 1.5rem 1.5rem 0 1.5rem;
+  cursor: pointer;
+  color: rgb(0, 0, 0);
+  transition: all 0.5s;
+  position: relative;
+}
+
+.options-button::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  background-color: rgba(0, 0, 0, 0.1);
+  transition: all 0.3s;
+}
+
+.options-button:hover::before {
+  opacity: 0;
+  transform: scale(0.5, 0.5);
+}
+
+.options-button::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  opacity: 0;
+  transition: all 0.3s;
+  border: 1px solid rgba(0, 0, 0, 0.5);
+  transform: scale(1.2, 1.2);
+}
+
+.options-button:hover::after {
+  opacity: 1;
+  transform: scale(1, 1);
+}
