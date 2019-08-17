@@ -14,7 +14,7 @@ Install at chrome web store stroe [here](https://chrome.google.com/webstore/deta
 
 * [ ] Auto detect tensorboard page
 * [x] Click any action to trigger hider script
-* [ ] Hide empty category pane
-* [ ] Option page
-* [ ] Option of if hiden empty category pane (only hide scalar card defaultly)
+* [x] Hide empty category pane
+* [x] Option page
+* [x] Option of if hiden empty category pane (only hide scalar card defaultly)
 * [ ] Right click menu button to run script
