@@ -26,7 +26,23 @@ if (typeof hiderInitialized === 'undefined') {
         counter += 1
       }
     }
-    console.debug(`TensorBoard Empty Scalar Hider: Successfully hide ${counter} elements.`)
+    console.debug(`TensorBoard Empty Scalar Hider: Successfully hide ${counter} scalars.`)
+  }
+
+  function hideEmptyPane() {
+    const paneList = document.getElementsByTagName('tf-category-pane')
+    let counter = 0
+    for (const pane of paneList) {
+      // Ignore not displayed or not extended panes
+      if (pane.style.display === 'none' || pane.getElementsByTagName('tf-paginated-view').length === 0) {
+        continue
+      }
+      if (pane.getElementsByClassName('symbol style-scope').length === 0) {
+        pane.style.display = 'none'
+        counter += 1
+      }
+    }
+    console.debug(`TensorBoard Empty Scalar Hider: Successfully hide ${counter} panes.`)
   }
 
   async function displayAllScalar() {
@@ -34,15 +50,35 @@ if (typeof hiderInitialized === 'undefined') {
     await sleep(100)
     const scalarList = document.getElementsByTagName('tf-scalar-card')
     for (const scalar of scalarList) {
-      // If main class not exist in scalar, wait 50ms
+      // Wait 50ms if main class not exist in pane
       while (scalar.getElementsByClassName('main').length === 0) {
-        console.debug('Still loading, wait 50ms...')
+        console.debug('TensorBoard Empty Scalar Hider: Still loading, wait 50ms...')
         await sleep(50)
       }
       scalar.style.display = 'block'
     }
     document.getElementById('reload-button').click()
-    console.debug(`TensorBoard Empty Scalar Hider: Successfully display all elements.`)
+    console.debug(`TensorBoard Empty Scalar Hider: Successfully display all scalars.`)
+  }
+
+  async function displayAllPane() {
+    // Wait for panes loading
+    await sleep(100)
+    const paneList = document.getElementsByTagName('tf-category-pane')
+    for (const pane of paneList) {
+      // Ignore not extended pane
+      if (pane.getElementsByTagName('tf-paginated-view').length === 0) {
+        continue
+      }
+      // Wait 50ms if main class not exist in pane
+      while (pane.getElementsByClassName('main').length === 0) {
+        console.debug('TensorBoard Empty Scalar Hider: Still loading, wait 50ms...')
+        await sleep(50)
+      }
+      pane.style.display = 'block'
+    }
+    document.getElementById('reload-button').click()
+    console.debug(`TensorBoard Empty Scalar Hider: Successfully display all panes.`)
   }
 
   hiderInitialized = true
