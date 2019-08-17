@@ -98,8 +98,7 @@ if (typeof hiderInitialized === 'undefined') {
           if (targetElement.hasAttribute('open-button')) {
             return
           }
-          displayAllPane().then(hideEmptyPane)
-          displayAllScalar().then(hideEmptyScalar)
+          displayAllPane().then(displayAllScalar).then(hideEmptyPane).then(hideEmptyScalar)
         })
       }
       hideEmptyPane()
