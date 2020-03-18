@@ -10,6 +10,12 @@ chrome.contextMenus.create({
   contexts: ['page']
 });
 
+chrome.contextMenus.create({
+  id: 'openAllPanes',
+  title: 'Open all tensorboard panes',
+  contexts: ['all']
+});
+
 chrome.contextMenus.onClicked.addListener(function (info, tab) {
   console.log('item ' + info.menuItemId + ' was clicked');
   console.log('info: ' + JSON.stringify(info));
@@ -17,6 +23,10 @@ chrome.contextMenus.onClicked.addListener(function (info, tab) {
   if (info.menuItemId == 'hideEmptyScalar') {
     chrome.tabs.executeScript(null, {
       file: 'js/hider.js'
+    });
+  } else if (info.menuItemId == 'openAllPanes') {
+    chrome.tabs.executeScript(null, {
+      file: 'js/opener.js'
     });
   }
   if (chrome.extension.lastError) {
